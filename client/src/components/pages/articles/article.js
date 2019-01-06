@@ -6,7 +6,8 @@ class Article extends Component {
     constructor(){
         super();
         this.state = {
-            articles : []
+            article    : [],
+            related     : []
 
         }
     }
@@ -14,9 +15,13 @@ class Article extends Component {
     componentDidMount() {
         //console.log(this.props.match.url.split("/")[2])
         const id = this.props.match.url.split("/")[2]
+        console.log('this state',this.state)
         fetch('/JSON/articles/getOne/' + id )
+            // console.log(fetch('/JSON/articles/getOne/' + id ))
           .then(res => res.json())
-          .then(articles => this.setState({articles}, () => console.log('articles fetched...', articles)));
+          .then(data => this.setState({article : data.article, related : data.related}, () => console.log('articles fetched...', data)));
+
+
       }
 
     render(){
@@ -28,8 +33,10 @@ class Article extends Component {
                     <h2>add1</h2>
                 </div>
 {/* ARTICLE ========== */}
+            <div className="articleBoard">
+
                 <div className="oneArticle">
-                    {this.state.articles.map(article => 
+                    {this.state.article.map(article => 
                         <article>
                             <h2>{article.articles_header}</h2>
                             <div className="oneArticleImg">
@@ -48,18 +55,20 @@ class Article extends Component {
                             </article>
                         </article>
                     )}
-                    <div>
-                        <div className="related">
-                            ralated1
-                        </div>
-                        <div className="related">
-                            related2
-                        </div>
-                        <div className="related">
-                            related3
-                        </div>
-                    </div>
+
                 </div>
+{/* RELATED ARTICLES ========== */}
+
+                <div className="relatedArticles">
+                    {this.state.related.map(data =>
+                        <div className="related">
+                            <img src={"/media/index/articles/"+data.articles_image} alt="Related"></img>
+                            <h2>{data.articles_header}</h2>
+                        </div>
+                    )}
+                </div>
+            </div>
+
 {/* ADD 2 =========== */}
                 <div className="add2">
                     <h2>add2</h2>
@@ -69,3 +78,4 @@ class Article extends Component {
     }
 }
 export default withRouter(Article);
+

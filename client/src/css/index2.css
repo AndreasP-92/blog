@@ -17,11 +17,14 @@ p{
     font-family: sans-serif;
 }
 /* ********************************************************* HEADER *********************************************/
-.header{
+.indexImg{
     background-image:url('/media/header_background_03.png');
     background-repeat: no-repeat;
     background-size:100%;
     height:500px;
+    /* z-index: 200; */
+    /* position: absolute; */
+    /* top:0px; */
 }
 .header h1{
     text-align: center;
@@ -44,6 +47,7 @@ p{
     right:20px;
     float:right;
     position:fixed;
+    z-index: 5;
 }
 .menu:after{
     display:block;
@@ -175,9 +179,11 @@ article_div_id:after{
 }
 
 /* ARTICLE =========== */
-.oneArticle{
+.articleBoard{
     width:45%;
     float:left;
+}
+.oneArticle{
     background-color:lightgrey;
     padding:10px;
 }
@@ -192,8 +198,11 @@ article_div_id:after{
 .oneArticleText{
     margin-top:20px;
 }
+.relatedArticles{
+
+}
 .related{
-    background-color:grey;
+    border:1px solid black;
     width:100%;
     margin-bottom: 10px;
 }

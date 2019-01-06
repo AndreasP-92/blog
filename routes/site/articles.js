@@ -1,45 +1,37 @@
-const db = require('../../config/sql').connect();
+const db            = require('../../config/sql').connect();
+const getAll        = require('../services/getAll');
+const getAllWhere   = require('../services/getAllWhere');
 
 module.exports = function(app){
     app.get('/articles/:1', function (req,res){
         var id = req.params.id
-        console.log('side læst')
-
-        console.log(id)
 
         res.send()
     })
-    app.get('/JSON/articles/getAll',function(req,res){
-        sql=`
-            SELECT
-                *
-            FROM
-                tb_articles
-        `
-        db.query(sql,function(err,data){
-            if(err){
-                console.log(err)
-            }else{
-                res.json(data)
-            }
-        })
+    app.get('/JSON/articles/getAll', async function(req,res){
+        const articles     = await getAll.articles();
+
+
+       try {
+           res.send(articles)
+       } catch (error) {
+           console.log(error)
+       }
     }),
-    app.get('/JSON/articles/getOne/:id',function(req,res){
+    app.get('/JSON/articles/getOne/:id', async function(req,res){
         articleId       = req.params.id;
-        sql=`
-            SELECT
-                *
-            FROM
-                tb_articles
-            WHERE
-                articles_id = ?
-        `
-        db.query(sql, articleId, function(err,data){
-            if(err){
-                console.log(err)
-            }else{
-                res.json(data)
-            }
-        })
+
+        const article       = await getAllWhere.article(articleId);
+        // console.log(article[0].articles_category)
+        const related       = await getAllWhere.articleRelated(article[0].articles_category)
+        console.log(related)
+
+        try {
+            res.send({article : article, related : related})
+            // res.send(related)
+        } catch (error) {
+            console.log(error)
+        }
+
     })
 }
