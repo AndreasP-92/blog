@@ -11,3 +11,4 @@ class about extends Component{
     };
 };
 export default about;
+

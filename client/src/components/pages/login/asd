@@ -1,0 +1,25 @@
+            <form class="form-signin" method="post" action="/JSON/inseruser" id="registerForm">
+            {/* USERNAME ============ */}
+                            <span id="reauth-email" class="reauth-email"></span>
+                            <input type="text" name="username" id="login__username" class="form-control input__field" placeholder="Username" ></input>
+                            <div id="userValid" class="valid"></div>			
+            {/* PASSWORD ============= */}
+                            <input type="password"  class="form-control input__field" id="password01" name="passphrase" placeholder="Password" ></input>
+                            <div id="passwordValid" class="valid"></div>							
+                            <input type="password"  class="form-control input__field" id="password02" placeholder="Repeat Password" ></input>
+            {/* NAME ================= */}
+                            <div id="name_valid" class="valid"></div>							
+                            <span id="reauth-email" class="reauth-email"></span>
+                            <input type="text" name="name" id="name" class="form-control input__field" placeholder="Name" ></input>
+            {/* LASTNAME ============= */}
+                            <div id="lastname_valid" class="valid"></div>							
+                            <span id="reauth-email" class="reauth-email"></span>
+                            <input type="text" name="lastname" id="lastname" class="form-control input__field" placeholder="Last Name" ></input>
+            {/* EMAIL ================= */}
+                            <div id="email_valid" class="valid"></div>							
+                            <input type="email"  name="email" class="form-control input__field" id="email" placeholder="E-mail" ></input>			
+                            {/* <div id="remember" class="checkbox">
+
+                            </div> */}
+                            <button class="btn btn-lg btn-primary btn-block btn-signin" id="submitButton" type="submit">Register</button>
+                        </form>

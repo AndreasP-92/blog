@@ -21,14 +21,19 @@
   },
   "homepage": "https://github.com/AndreasP-92/blog#readme",
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
+    "express-fileupload": "^1.1.1-alpha.1",
     "express-session": "^1.15.6",
     "fs": "0.0.1-security",
     "https": "^1.0.0",
     "mysql2": "^1.5.3",
     "nodemailer": "^4.6.5",
     "nodemon": "^1.17.5",
+    "passport": "^0.4.0",
+    "passport-google-oauth": "^1.0.0",
+    "passport-local": "^1.0.0",
     "path": "^0.12.7"
   }
 }
